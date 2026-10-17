@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Муж на час — домашний мастер. Сборка мебели, ремонт, установка полок и мелкие бытовые работы.">
+    <title>Муж на час — домашний мастер</title>
+
+    <!-- Подключение отдельного CSS-файла -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Живой фон -->
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <!-- ШАПКА САЙТА -->
+    <header class="header" id="home">
+
+        <div class="header-top">
+
+            <a href="#contacts" class="write-button">
+                Написать <span>↗</span>
+            </a>
+
+            <a href="#home" class="logo">
+                МУЖ НА ЧАС
+            </a>
+
+            <a href="tel:+77777777777" class="phone">
+                +7 (777) 777 77 77
+            </a>
+
+            <button class="mobile-menu-button" aria-label="Перейти к услугам"
+                    onclick="document.querySelector('.navigation').classList.toggle('nav-open')">
+                ☰
+            </button>
+
+        </div>
+
+        <!-- НАВИГАЦИЯ -->
+        <nav class="navigation">
+            <a href="#services">Услуги</a>
+            <a href="#prices">Цены</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="main-layout">
+
+        <!-- ЛЕВАЯ ГАЛЕРЕЯ -->
+        <aside class="side-gallery left-gallery">
+
+            <div class="photo-card">
+                <img
+                    src="https://expopk.ru/upload/medialibrary/e43/e43cc3d9ecf0152e12a8e4d86c457a41.jpg"
+                    alt=""
+                    loading="lazy">
+                <span class="photo-caption">Установка полок</span>
+            </div>
+
+            <div class="photo-card">
+                <img
+                    src="https://amatid.ru/wp-content/uploads/639130236106868904.webp"
+                    alt="Светлая гардеробная после сборки и установки мебели"
+                    loading="lazy">
+                <span class="photo-caption">Сборка мебели</span>
+            </div>
+
+            <div class="photo-card">
+                <img
+                    src="https://careerpath.pro/media/img/ru/professions/carpenter/carpenter.jpg"
+                    alt="Руки мастера, который работает молотком по деревянной детали"
+                    loading="lazy">
+                <span class="photo-caption">Мелкий ремонт</span>
+            </div>
+
+        </aside>
+
+
+        <!-- ЦЕНТРАЛЬНЫЙ БЛОК -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>ПОЧИНИМ ВСЁ,<br class="desktop-break">
+                    ДО ЧЕГО НЕ ДОХОДЯТ РУКИ
+                </h1>
+
+                <p class="hero-description">
+                    Приедем домой, привезём инструменты
+                    и решим проблему за один визит
+                </p>
+
+                <div class="hero-grid">
+
+                    <!-- ЛЕВАЯ КОЛОНКА -->
+                    <div class="hero-left">
+
+                        <a href="#contacts" class="button button-dark">
+                            Вызвать мастера <span>↗</span>
+                        </a>
+
+                        <a href="#services" class="button button-light">
+                            Посмотреть услуги <span>↓</span>
+                        </a>
+
+                        <div class="question-card">
+                            <span class="question-icon">✳</span>
+
+                            <h2>
+                                ЧТО-ТО СЛОМАЛОСЬ?
+                                ИЛИ ПРОСТО
+                                ДАВНО ПОРА?
+                            </h2>
+
+                            <p>
+                                Разберёмся с домашними делами
+                                вместо вас.
+                            </p>
+
+                            <a href="#contacts" class="question-link">
+                                Давайте решим! →
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ГЛАВНАЯ ФОТОГРАФИЯ -->
+                    <div class="hero-right">
+
+                        <div class="main-photo">
+                            <img
+                                src="https://img.magnific.com/premium-photo/master-with-screwdriver-sets-fittings-window_493343-23572.jpg?semt=ais_hybrid&w=740&q=80"
+                                alt="Домашний мастер устанавливает окно с помощью шуруповёрта"
+                            >
+
+                            <div class="photo-label">
+                                <span class="status-dot"></span>
+                                Мастер уже в пути
+                            </div>
+                        </div>
+
+                        <div class="hero-photo-note">
+                            <span>01 / 03</span>
+                            <span>Качество в каждой детали</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-bottom">
+                    <span>⌁ Работаем аккуратно</span>
+                    <span>✳ Честные цены</span>
+                    <span>↗ Удобное время</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ПРАВАЯ ГАЛЕРЕЯ -->
+        <aside class="side-gallery right-gallery">
+
+            <div class="photo-card">
+                <img
+                    src="https://www.eremont.ru/upload/iblock/bdf/2hfx97d8yo8e822te2x7qbaw2eepcwpf/instrument-domashnego-mastera-4.jpg"
+                    alt="Набор инструментов домашнего мастера для ремонта"
+                    loading="lazy">
+                <span class="photo-caption">Всегда с инструментом</span>
+            </div>
+
+            <div class="photo-card">
+                <img
+                    src="https://electricam.by/wp-content/uploads/2026/09/montazh-svetilnikov.jpg"
+                    alt="Мастер устанавливает потолочный светильник"
+                    loading="lazy">
+                <span class="photo-caption">Установка освещения</span>
+            </div>
+
+            <div class="photo-card">
+                <img
+                    src="https://1stroitelny.kz/upload/1368882121_otverstie_v_stene.jpg"
+                    alt="Мастер сверлит стену и устанавливает крепления"
+                    loading="lazy">
+                <span class="photo-caption">Монтаж и крепления</span>
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- УСЛУГИ -->
+    <section class="services section-container" id="services">
+
+        <div class="section-heading">
+            <span class="eyebrow">ЧЕМ МОЖЕМ ПОМОЧЬ?</span>
+            <h2>МАЛЕНЬКИЕ ДЕЛА — БОЛЬШОЕ ОБЛЕГЧЕНИЕ</h2>
+            <p>Берём на себя задачи, на которые постоянно не хватает времени.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <article class="service-card">
+                <div class="service-icon">🔩</div>
+                <span class="service-number">01</span>
+                <h3>Сборка мебели</h3>
+                <p>Шкафы, столы, кровати, комоды и стеллажи.</p>
+                <a href="#contacts">Заказать услугу →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🖼️</div>
+                <span class="service-number">02</span>
+                <h3>Полки и карнизы</h3>
+                <p>Сверление стен, монтаж полок, картин и карнизов.</p>
+                <a href="#contacts">Заказать услугу →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">💡</div>
+                <span class="service-number">03</span>
+                <h3>Домашний ремонт</h3>
+                <p>Замена мелких деталей, регулировка дверей и ручек.</p>
+                <a href="#contacts">Заказать услугу →</a>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🛠️</div>
+                <span class="service-number">04</span>
+                <h3>Установка техники</h3>
+                <p>Помощь с бытовыми приборами и простым монтажом.</p>
+                <a href="#contacts">Заказать услугу →</a>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ЦЕНЫ -->
+    <section class="prices section-container" id="prices">
+
+        <div class="section-heading">
+            <span class="eyebrow">БЕЗ НЕПРИЯТНЫХ СЮРПРИЗОВ</span>
+            <h2>СКОЛЬКО СТОИТ СПОКОЙСТВИЕ?</h2>
+            <p>Уточним стоимость до начала работ.</p>
+        </div>
+
+        <div class="price-panel">
+
+            <div class="price-item">
+                <div>
+                    <h3>Мелкий бытовой ремонт</h3>
+                    <p>Регулировка, замена деталей, мелкие работы</p>
+                </div>
+                <span>От 3 000 ₸</span>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <h3>Сборка мебели</h3>
+                    <p>Стоимость зависит от размера и сложности</p>
+                </div>
+                <span>От 5 000 ₸</span>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <h3>Монтаж и установка</h3>
+                    <p>Полки, карнизы, крепления и другие работы</p>
+                </div>
+                <span>От 3 000 ₸</span>
+            </div>
+
+            <div class="price-note">
+                * Цены примерные для демонстрации сайта.
+                Замени их на свои реальные тарифы.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- КОНТАКТЫ -->
+    <section class="contact-section section-container" id="contacts">
+
+        <div class="contact-card">
+
+            <div class="contact-text">
+                <span class="eyebrow">ПОРА РЕШАТЬ ДЕЛА</span>
+
+                <h2>ВЫ ОТДЫХАЕТЕ.<br>МЫ ЧИНИМ.</h2>
+
+                <p>
+                    Расскажите, что нужно сделать.
+                    Обсудим задачу и договоримся о времени.
+                </p>
+
+                <a href="tel:+77777777777" class="button button-dark">
+                    Позвонить мастеру ↗
+                </a>
+            </div>
+
+            <div class="contact-details">
+                <span>ВАШ ДОМАШНИЙ МАСТЕР</span>
+
+                <a href="tel:+77777777777" class="contact-phone">
+                    +7 (777) 777 77 77
+                </a>
+
+                <p>Алматы · Выезд на дом</p>
+
+                <a
+                    href="https://wa.me/77777777777"
+                    class="whatsapp-link"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Написать в WhatsApp ↗
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+
+        <a href="#home" class="footer-logo">МУЖ НА ЧАС<span>®</span></a>
+
+        <p>Решаем бытовые задачи, освобождаем ваше время.</p>
+
+        <div class="footer-links">
+            <a href="#services">Услуги</a>
+            <a href="#prices">Цены</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+
+        <span class="copyright">© 2026 Муж на час. Все права защищены.</span>
+
+    </footer>
+
+</body>
+</html>

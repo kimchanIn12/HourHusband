@@ -1,0 +1,1345 @@
+
+/* ==============================
+   1. ОСНОВНЫЕ НАСТРОЙКИ
+================================ */
+
+:root {
+    --peach: #ffdac6;
+    --peach-light: #ffe8da;
+    --cream: #fffbea;
+    --yellow: #ffdf58;
+    --black: #090806;
+    --white: #ffffff;
+    --text: #17130f;
+    --muted: #746b62;
+    --radius: 32px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: var(--text);
+    background: var(--peach);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ==============================
+   2. ЖИВОЙ ФОН
+================================ */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffd8c3,
+            #ffe3d0,
+            #ffd4bd,
+            #ffead7,
+            #ffd8c3
+        );
+
+    background-size: 300% 300%;
+    animation: backgroundFlow 16s ease-in-out infinite;
+}
+
+.background-effects {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(85px);
+    opacity: 0.4;
+    animation: glowMove 16s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+    top: 5%;
+    left: -150px;
+    background: #ffec82;
+}
+
+.glow-2 {
+    top: 45%;
+    right: -160px;
+    background: #ffb99e;
+    animation-delay: -5s;
+}
+
+.glow-3 {
+    bottom: -220px;
+    left: 35%;
+    background: #fff6c7;
+    animation-delay: -9s;
+}
+
+@keyframes backgroundFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes glowMove {
+    from {
+        transform: translate(0, 0) scale(0.9);
+    }
+
+    to {
+        transform: translate(100px, -70px) scale(1.2);
+    }
+}
+
+
+/* ==============================
+   3. ШАПКА
+================================ */
+
+.header {
+    position: relative;
+    z-index: 10;
+}
+
+.header-top {
+    min-height: 128px;
+    padding: 16px 4.5%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(38px, 6.2vw, 104px);
+    font-weight: 400;
+    letter-spacing: -3px;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    transition: letter-spacing 0.35s ease;
+}
+
+.logo:hover {
+    letter-spacing: 1px;
+}
+
+.write-button {
+    justify-self: start;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-width: 190px;
+    padding: 22px 28px;
+    border-radius: 15px;
+    background: var(--yellow);
+    font-size: 23px;
+    font-weight: 600;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.write-button span {
+    opacity: 0;
+    transform: translate(-5px, 5px);
+    transition: 0.3s ease;
+}
+
+.write-button:hover {
+    transform: translateY(-5px);
+    background: #ffe875;
+    box-shadow: 0 12px 25px #dba92c44;
+}
+
+.write-button:hover span {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.phone {
+    justify-self: end;
+    font-size: clamp(15px, 1.6vw, 25px);
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.phone:hover {
+    opacity: 0.6;
+}
+
+.mobile-menu-button {
+    display: none;
+    border: 0;
+    background: var(--yellow);
+    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* ==============================
+   4. НАВИГАЦИЯ
+================================ */
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    border-top: 3px solid var(--white);
+    border-bottom: 3px solid var(--white);
+}
+
+.navigation a {
+    padding: 15px 26px;
+    border-right: 3px solid var(--white);
+    font-family: "Caveat", cursive;
+    font-size: 29px;
+    font-weight: 600;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.navigation a:first-child {
+    border-left: 3px solid var(--white);
+}
+
+.navigation a:hover {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+
+/* ==============================
+   5. ОСНОВНАЯ СЕТКА
+================================ */
+
+.main-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(130px, 14%)
+        minmax(0, 1fr)
+        minmax(130px, 14%);
+    gap: 22px;
+    padding: 28px 2.5%;
+    align-items: stretch;
+}
+
+
+/* ==============================
+   6. БОКОВЫЕ ФОТОГРАФИИ
+================================ */
+
+.side-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 26px;
+    min-width: 0;
+}
+
+.photo-card {
+    position: relative;
+    aspect-ratio: 1 / 0.83;
+    padding: 12px;
+    border-radius: 36px;
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 8px 22px #b77d6120;
+    animation: photoAppear 0.9s ease both;
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.4s ease;
+}
+
+.photo-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.photo-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.photo-card img {
+    border-radius: 22px;
+    transition: transform 0.6s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 0 18px 35px #a86d4b35;
+    z-index: 2;
+}
+
+.photo-card:hover img {
+    transform: scale(1.09);
+}
+
+.photo-caption {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    padding: 9px;
+    border-radius: 12px;
+    color: var(--white);
+    background: #000000b8;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+}
+
+.photo-card:hover .photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes photoAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================
+   7. ЦЕНТРАЛЬНАЯ КАРТОЧКА
+================================ */
+
+.hero {
+    min-width: 0;
+    padding: 34px 12px 18px;
+    border: 10px solid var(--white);
+    border-radius: 95px;
+    background: var(--cream);
+    box-shadow: 0 18px 45px #a36a4c0d;
+    animation: heroAppear 0.8s ease both;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero h1 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(24px, 2.8vw, 43px);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    margin: 10px 0 18px;
+    font-size: clamp(17px, 2vw, 30px);
+    line-height: 1.55;
+    text-align: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1.35fr);
+    gap: 16px;
+    align-items: stretch;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.button {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 23px;
+    text-align: center;
+    font-size: clamp(16px, 1.8vw, 26px);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.button span {
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: 0.3s ease;
+}
+
+.button:hover span {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.button:hover {
+    transform: translateY(-4px);
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button-dark {
+    color: var(--white);
+    background: var(--black);
+}
+
+.button-dark:hover {
+    background: #302820;
+    box-shadow: 0 10px 22px #00000025;
+}
+
+.button-light {
+    color: var(--black);
+    background: var(--white);
+}
+
+.button-light:hover {
+    background: var(--yellow);
+    box-shadow: 0 10px 22px #e5c34a30;
+}
+
+
+/* ==============================
+   8. ЖЁЛТАЯ КАРТОЧКА
+================================ */
+
+.question-card {
+    position: relative;
+    flex: 1;
+    min-height: 260px;
+    margin-top: 2px;
+    padding: 28px 18px;
+    border-radius: 58px;
+    background: var(--yellow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.question-card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -60%;
+    width: 60%;
+    height: 300%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffffff55,
+        transparent
+    );
+    transform: rotate(25deg);
+    transition: left 0.7s ease;
+}
+
+.question-card:hover::before {
+    left: 120%;
+}
+
+.question-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px #e2b63245;
+}
+
+.question-icon {
+    position: absolute;
+    top: 15px;
+    right: 22px;
+    font-size: 24px;
+    transition: transform 0.5s ease;
+}
+
+.question-card:hover .question-icon {
+    transform: rotate(90deg);
+}
+
+.question-card h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(22px, 2.3vw, 35px);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.question-card p {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.question-link {
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.question-link:hover {
+    transform: translateX(5px);
+}
+
+
+/* ==============================
+   9. ГЛАВНАЯ ФОТОГРАФИЯ
+================================ */
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.main-photo {
+    position: relative;
+    flex: 1;
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 38px;
+    background: #e8dfd4;
+}
+
+.main-photo img {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.main-photo:hover img {
+    transform: scale(1.06);
+}
+
+.photo-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 15px;
+    border: 1px solid #ffffff70;
+    border-radius: 50px;
+    background: #ffffffdf;
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #55b969;
+    box-shadow: 0 0 0 4px #55b96925;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 4px #55b96925;
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px #55b96910;
+    }
+}
+
+.hero-photo-note {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* ==============================
+   10. НИЖНЯЯ ПОЛОСА HERO
+================================ */
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 17px 5px 0;
+    border-top: 1px solid #e8ddc7;
+    color: #5d5549;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   11. ОБЩИЕ СЕКЦИИ
+================================ */
+
+.section-container {
+    width: min(1400px, 92%);
+    margin: 100px auto;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.2;
+}
+
+.section-heading p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   12. КАРТОЧКИ УСЛУГ
+================================ */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    position: relative;
+    min-height: 280px;
+    padding: 28px 23px;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    background: #fffaf0cc;
+    box-shadow: 0 10px 30px #b57c5a0b;
+    overflow: hidden;
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: var(--white);
+    box-shadow: 0 22px 45px #a86d4b20;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    border-radius: 19px;
+    background: var(--yellow);
+    font-size: 28px;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(-8deg) scale(1.1);
+}
+
+.service-number {
+    position: absolute;
+    top: 32px;
+    right: 24px;
+    color: #b3a99b;
+    font-size: 13px;
+}
+
+.service-card h3 {
+    margin-top: 28px;
+    font-size: 21px;
+}
+
+.service-card p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.service-card > a {
+    display: inline-block;
+    margin-top: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.service-card > a:hover {
+    transform: translateX(5px);
+}
+
+
+/* ==============================
+   13. ЦЕНЫ
+================================ */
+
+.price-panel {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 12px 32px;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    background: #fffaf0d9;
+}
+
+.price-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 25px 0;
+    border-bottom: 1px solid #e8ddca;
+}
+
+.price-item h3 {
+    font-size: 19px;
+}
+
+.price-item p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.price-item > span {
+    flex-shrink: 0;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.price-note {
+    padding: 18px 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   14. КОНТАКТЫ
+================================ */
+
+.contact-card {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 35px;
+    padding: clamp(28px, 5vw, 65px);
+    border: 9px solid var(--white);
+    border-radius: 48px;
+    background: var(--cream);
+}
+
+.contact-text h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(36px, 5vw, 65px);
+    line-height: 1.12;
+}
+
+.contact-text > p {
+    max-width: 430px;
+    margin: 20px 0 25px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.contact-text .button {
+    width: fit-content;
+    max-width: 100%;
+    font-size: 17px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 30px;
+    background: var(--yellow);
+}
+
+.contact-details > span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.contact-phone {
+    margin-top: 20px;
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 700;
+}
+
+.contact-details > p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.whatsapp-link {
+    margin-top: 28px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--black);
+    font-weight: 700;
+    transition: opacity 0.3s ease;
+}
+
+.whatsapp-link:hover {
+    opacity: 0.6;
+}
+
+
+/* ==============================
+   15. ПОДВАЛ
+================================ */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 45px 5% 30px;
+    border-top: 3px solid var(--white);
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 29px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.footer-logo span {
+    margin-left: 4px;
+    font-size: 11px;
+    vertical-align: top;
+}
+
+.footer > p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 5px 0;
+}
+
+.footer-links a {
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.55;
+}
+
+.copyright {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* ==============================
+   16. ПЛАНШЕТЫ
+================================ */
+
+@media (max-width: 1100px) {
+
+    .header-top {
+        grid-template-columns: auto 1fr auto;
+        gap: 15px;
+        padding: 18px 3%;
+    }
+
+    .write-button {
+        min-width: auto;
+        padding: 17px 20px;
+        font-size: 18px;
+    }
+
+    .logo {
+        font-size: clamp(32px, 5.5vw, 65px);
+        letter-spacing: -2px;
+    }
+
+    .main-layout {
+        grid-template-columns: 1fr;
+        padding: 25px 4%;
+    }
+
+    .side-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .left-gallery {
+        order: 2;
+    }
+
+    .hero {
+        order: 1;
+        border-radius: 65px;
+        padding: 35px 22px 20px;
+    }
+
+    .right-gallery {
+        order: 3;
+    }
+
+    .photo-card {
+        aspect-ratio: 1 / 0.75;
+        border-radius: 25px;
+        padding: 9px;
+    }
+
+    .photo-card img {
+        border-radius: 17px;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 4vw, 44px);
+    }
+
+    .hero-description {
+        font-size: 21px;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(200px, 0.85fr) minmax(0, 1.3fr);
+    }
+
+    .question-card {
+        min-height: 250px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ==============================
+   17. МОБИЛЬНЫЕ УСТРОЙСТВА
+================================ */
+
+@media (max-width: 650px) {
+
+    html {
+        scroll-padding-top: 20px;
+    }
+
+    .header-top {
+        min-height: 90px;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 17px 5%;
+    }
+
+    .logo {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        text-align: left;
+        font-size: clamp(29px, 7.5vw, 43px);
+        letter-spacing: -2px;
+    }
+
+    .write-button,
+    .phone {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .navigation {
+        display: none;
+        flex-direction: column;
+        border-bottom: 2px solid var(--white);
+    }
+
+    .navigation.nav-open {
+        display: flex;
+        animation: menuAppear 0.3s ease both;
+    }
+
+    .navigation a {
+        padding: 13px 20px;
+        border-right: 0;
+        border-left: 0 !important;
+        border-bottom: 1px solid #ffffff90;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    @keyframes menuAppear {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .main-layout {
+        gap: 18px;
+        padding: 20px 4%;
+    }
+
+    .hero {
+        padding: 27px 15px 17px;
+        border: 6px solid var(--white);
+        border-radius: 38px;
+    }
+
+    .hero h1 {
+        font-size: clamp(25px, 6.4vw, 35px);
+        line-height: 1.22;
+    }
+
+    .desktop-break {
+        display: none;
+    }
+
+    .hero-description {
+        margin: 13px 0 20px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .hero-left {
+        display: contents;
+    }
+
+    .button {
+        min-height: 52px;
+        width: 100%;
+        font-size: 17px;
+        border-radius: 18px;
+    }
+
+    .button-dark {
+        order: 1;
+    }
+
+    .button-light {
+        order: 2;
+    }
+
+    .hero-right {
+        order: 3;
+    }
+
+    .main-photo {
+        min-height: 260px;
+        aspect-ratio: 4 / 3;
+        border-radius: 25px;
+    }
+
+    .question-card {
+        order: 4;
+        min-height: 230px;
+        padding: 30px 22px;
+        border-radius: 30px;
+    }
+
+    .question-card h2 {
+        font-size: 29px;
+    }
+
+    .question-card p {
+        font-size: 14px;
+    }
+
+    .hero-bottom {
+        justify-content: center;
+        font-size: 12px;
+        gap: 10px 18px;
+        line-height: 1.6;
+    }
+
+    .side-gallery {
+        gap: 10px;
+    }
+
+    .photo-card {
+        padding: 6px;
+        border-radius: 18px;
+        aspect-ratio: 1 / 1;
+    }
+
+    .photo-card img {
+        border-radius: 13px;
+    }
+
+    .photo-caption {
+        display: none;
+    }
+
+    .section-container {
+        width: 92%;
+        margin: 65px auto;
+    }
+
+    .section-heading {
+        margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .section-heading p {
+        font-size: 15px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .service-card {
+        min-height: auto;
+        padding: 24px;
+        border-radius: 25px;
+    }
+
+    .service-card h3 {
+        margin-top: 20px;
+    }
+
+    .service-card > a {
+        margin-top: 17px;
+    }
+
+    .price-panel {
+        padding: 10px 19px;
+        border-radius: 23px;
+    }
+
+    .price-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 22px 0;
+    }
+
+    .price-item h3 {
+        font-size: 17px;
+    }
+
+    .price-item p {
+        font-size: 13px;
+    }
+
+    .price-item > span {
+        font-size: 18px;
+    }
+
+    .contact-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 24px 18px;
+        border: 6px solid var(--white);
+        border-radius: 32px;
+    }
+
+    .contact-text h2 {
+        font-size: 42px;
+    }
+
+    .contact-text > p {
+        font-size: 14px;
+    }
+
+    .contact-details {
+        padding: 24px 18px;
+        border-radius: 23px;
+    }
+
+    .contact-phone {
+        font-size: clamp(20px, 6vw, 28px);
+    }
+
+    .footer {
+        padding: 35px 5% 25px;
+    }
+
+    .footer-links {
+        gap: 18px;
+    }
+
+}
+
+
+/* ==============================
+   18. МАЛЕНЬКИЕ ЭКРАНЫ
+================================ */
+
+@media (max-width: 360px) {
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .hero {
+        padding: 23px 11px 14px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+    }
+
+    .question-card h2 {
+        font-size: 25px;
+    }
+
+    .hero-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+
+/* ==============================
+   19. ДОСТУПНОСТЬ
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
